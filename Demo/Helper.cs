@@ -8,7 +8,9 @@ namespace Demo
 {
     // Concreate Class can Includes static and non static Functions
     // but the static classes only hold static fonctions
-    internal class Helper<T>
+    // must be a class or struct and implement built in interface 
+    // i compareable
+    internal class Helper<T> where T : IComparable
     {
 
 
@@ -69,6 +71,18 @@ namespace Demo
                 }
             }
             return -1;
+        }
+
+        public static void SortArr(ref T[] Arr)
+        {
+           for(int i = 0;i < Arr.Length - 1; i++)
+            {
+                for(int j = 0; j < Arr.Length - 1; j++)
+                {
+                    if(Arr[j].CompareTo(Arr[j + 1]) == 1)
+                        Swap(ref Arr[j],ref Arr[j + 1]);
+                }
+            }
         }
 
     }
